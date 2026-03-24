@@ -1,0 +1,695 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hello PG's | Premium Boys' Accommodation, Ahmedabad</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --red: #E0191A;
+  --red-dark: #b91213;
+  --black: #111111;
+  --off-black: #1c1c1c;
+  --cream: #FAFAF8;
+  --light-gray: #F3F3F1;
+  --mid-gray: #888;
+  --white: #FFFFFF;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--black);overflow-x:hidden;}
+
+/* â”€â”€ NAV â”€â”€ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 48px;
+  background:rgba(255,255,255,0.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,0,0,0.07);
+  transition:padding 0.3s, box-shadow 0.3s;
+}
+nav.scrolled{padding:10px 48px;box-shadow:0 4px 24px rgba(0,0,0,0.08);}
+.nav-logo img{height:42px;width:auto;display:block;background:#fff;clip-path:inset(2px);}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
+.nav-links a{
+  color:var(--black);text-decoration:none;
+  font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--red);}
+.nav-cta{
+  background:var(--red)!important;color:var(--white)!important;
+  padding:9px 22px!important;letter-spacing:0.08em!important;
+  transition:background 0.2s!important;
+}
+.nav-cta:hover{background:var(--red-dark)!important;color:var(--white)!important;}
+
+/* hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--black);border-radius:2px;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.mobile-menu{
+  display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:150;
+  background:var(--white);flex-direction:column;justify-content:center;align-items:center;gap:36px;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{
+  font-size:1.6rem;font-family:'Playfair Display',serif;color:var(--black);
+  text-decoration:none;transition:color 0.2s;
+}
+.mobile-menu a:hover{color:var(--red);}
+.mobile-menu .m-cta{
+  background:var(--red);color:var(--white)!important;
+  padding:14px 40px;font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:0.85rem!important;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+}
+
+/* â”€â”€ HERO â”€â”€ */
+#hero{
+  min-height:100svh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  background:var(--black);position:relative;overflow:hidden;
+  padding:100px 24px 60px;text-align:center;
+}
+.hero-noise{
+  position:absolute;inset:0;opacity:0.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px;
+}
+.hero-accent{
+  position:absolute;top:-20%;right:-10%;width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle, rgba(224,25,26,0.15) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero-accent-2{
+  position:absolute;bottom:-15%;left:-5%;width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle, rgba(224,25,26,0.08) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero-logo-wrap{
+  margin-bottom:32px;
+  animation:fadeUp 1s cubic-bezier(.22,1,.36,1) both;
+}
+.hero-logo-wrap img{
+  height:90px;width:auto;
+  background:#fff;
+  clip-path:inset(2px);
+}
+.hero-tag{
+  display:inline-block;background:var(--red);color:var(--white);
+  font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;
+  padding:6px 18px;margin-bottom:22px;
+  animation:fadeUp 1s 0.1s cubic-bezier(.22,1,.36,1) both;
+}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.8rem,7vw,6rem);font-weight:400;
+  color:var(--white);line-height:1.05;margin-bottom:20px;
+  animation:fadeUp 1s 0.2s cubic-bezier(.22,1,.36,1) both;
+}
+.hero-title em{color:var(--red);font-style:italic;}
+.hero-sub{
+  color:rgba(255,255,255,0.5);font-size:clamp(0.9rem,2vw,1.05rem);
+  font-weight:300;letter-spacing:0.05em;margin-bottom:36px;
+  animation:fadeUp 1s 0.3s cubic-bezier(.22,1,.36,1) both;
+}
+.hero-rating{
+  display:inline-flex;align-items:center;gap:12px;
+  border:1px solid rgba(255,255,255,0.15);padding:11px 24px;
+  color:rgba(255,255,255,0.7);font-size:0.83rem;margin-bottom:40px;
+  animation:fadeUp 1s 0.4s cubic-bezier(.22,1,.36,1) both;
+}
+.hero-rating .stars{color:var(--red);letter-spacing:2px;}
+.hero-btns{
+  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+  animation:fadeUp 1s 0.5s cubic-bezier(.22,1,.36,1) both;
+}
+.btn-primary{
+  background:var(--red);color:var(--white);padding:15px 36px;
+  font-size:0.82rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+  text-decoration:none;transition:background 0.25s,transform 0.25s;display:inline-block;
+}
+.btn-primary:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-outline{
+  border:1px solid rgba(255,255,255,0.3);color:var(--white);padding:15px 36px;
+  font-size:0.82rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;
+  text-decoration:none;transition:border-color 0.25s,transform 0.25s;display:inline-block;
+}
+.btn-outline:hover{border-color:rgba(255,255,255,0.7);transform:translateY(-2px);}
+.hero-scroll{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,0.25);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,rgba(224,25,26,0.7),transparent);animation:scrollPulse 2s ease-in-out infinite;}
+
+/* â”€â”€ SECTION COMMONS â”€â”€ */
+.section-wrap{padding:96px 60px;max-width:1260px;margin:0 auto;}
+.section-eyebrow{font-size:0.68rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--red);margin-bottom:12px;}
+.gold-line{width:40px;height:2px;background:var(--red);margin-bottom:20px;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.15;margin-bottom:16px;color:var(--black);}
+.section-title em{font-style:italic;color:var(--red);}
+.section-sub{color:var(--mid-gray);font-size:0.95rem;line-height:1.75;font-weight:300;max-width:520px;margin-bottom:56px;}
+
+/* â”€â”€ ABOUT â”€â”€ */
+#about{background:var(--white);}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.about-text p{color:#555;font-size:0.95rem;line-height:1.85;font-weight:300;margin-bottom:18px;}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;border:1px solid #eee;}
+.stat{padding:22px 20px;text-align:center;border-right:1px solid #eee;}
+.stat:last-child{border-right:none;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--red);line-height:1;}
+.stat-label{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid-gray);margin-top:6px;}
+.about-visual{position:relative;}
+.about-card{background:var(--black);color:var(--white);padding:44px 36px;position:relative;overflow:hidden;}
+.about-card::after{content:'';position:absolute;bottom:0;right:0;width:180px;height:180px;background:radial-gradient(circle,rgba(224,25,26,0.2) 0%,transparent 70%);}
+.about-card-logo{height:56px;width:auto;margin-bottom:24px;display:block;background:#fff;clip-path:inset(2px);}
+.about-card h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;color:var(--white);margin-bottom:14px;}
+.about-card p{font-size:0.87rem;color:rgba(255,255,255,0.55);line-height:1.8;}
+.about-card blockquote{margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);font-style:italic;font-size:0.85rem;color:rgba(255,255,255,0.4);line-height:1.7;}
+.red-tab{position:absolute;top:0;left:0;width:4px;height:100%;background:var(--red);}
+
+/* â”€â”€ ROOMS â”€â”€ */
+#rooms{background:var(--light-gray);}
+.rooms-intro{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:24px;}
+.rooms-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.room-card{background:var(--white);border:1px solid #e8e8e8;padding:36px 28px 32px;position:relative;transition:box-shadow 0.3s,transform 0.3s,border-color 0.3s;}
+.room-card:hover{box-shadow:0 20px 48px rgba(0,0,0,0.1);transform:translateY(-6px);border-color:var(--red);}
+.room-card.best{border-top:3px solid var(--red);}
+.room-pill{display:inline-block;background:var(--red);color:var(--white);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;padding:4px 12px;margin-bottom:20px;font-weight:600;}
+.room-pill.dark{background:var(--black);}
+.room-icon{font-size:1.8rem;margin-bottom:16px;display:block;}
+.room-name{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:400;color:var(--black);margin-bottom:4px;line-height:1.1;}
+.room-name em{color:var(--red);font-style:italic;}
+.room-cap{font-size:0.73rem;color:var(--mid-gray);letter-spacing:0.08em;margin-bottom:24px;text-transform:uppercase;}
+.room-features{list-style:none;}
+.room-features li{font-size:0.83rem;color:#555;padding:8px 0;border-bottom:1px solid #f0f0f0;display:flex;align-items:center;gap:10px;font-weight:300;}
+.room-features li:last-child{border-bottom:none;}
+.room-features li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--red);flex-shrink:0;}
+.enquire-btn{
+  display:block;margin-top:24px;text-align:center;
+  background:var(--black);color:var(--white);padding:11px;
+  font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;
+  text-decoration:none;transition:background 0.2s;
+}
+.enquire-btn:hover{background:var(--red);}
+
+/* â”€â”€ AMENITIES â”€â”€ */
+#amenities{background:var(--white);}
+.amenities-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#e8e8e8;}
+.amenity{background:var(--white);padding:36px 32px;transition:background 0.25s;}
+.amenity:hover{background:#fff8f8;}
+.amenity-icon{font-size:1.7rem;margin-bottom:14px;}
+.amenity h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:var(--black);margin-bottom:10px;}
+.amenity p{font-size:0.84rem;color:var(--mid-gray);line-height:1.75;font-weight:300;}
+
+/* â”€â”€ REVIEWS â”€â”€ */
+#reviews{background:var(--black);}
+#reviews .section-title{color:var(--white);}
+#reviews .section-sub{color:rgba(255,255,255,0.4);}
+#reviews .section-eyebrow{color:var(--red);}
+.rating-bar{
+  display:flex;align-items:center;gap:28px;
+  background:rgba(224,25,26,0.08);border:1px solid rgba(224,25,26,0.2);
+  padding:20px 32px;margin-bottom:48px;max-width:380px;
+}
+.rating-big{font-family:'Playfair Display',serif;font-size:4rem;color:var(--red);line-height:1;font-weight:400;}
+.rating-info .stars{color:var(--red);font-size:1rem;letter-spacing:3px;}
+.rating-info p{font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:5px;}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.review-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:28px;transition:border-color 0.3s,transform 0.3s;}
+.review-card:hover{border-color:rgba(224,25,26,0.4);transform:translateY(-4px);}
+.review-stars{color:var(--red);letter-spacing:2px;font-size:0.85rem;margin-bottom:14px;}
+.review-text{font-family:'Playfair Display',serif;font-size:0.97rem;font-style:italic;color:rgba(255,255,255,0.7);line-height:1.75;margin-bottom:18px;}
+.review-author{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--red);}
+.review-date{font-size:0.68rem;color:rgba(255,255,255,0.25);margin-top:4px;}
+
+/* â”€â”€ CONTACT â”€â”€ */
+#contact{background:var(--cream);}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.contact-cards{display:flex;flex-direction:column;gap:16px;}
+.contact-card{background:var(--white);border:1px solid #e8e8e8;padding:24px 28px;display:flex;gap:18px;align-items:flex-start;transition:border-color 0.25s,transform 0.25s;}
+.contact-card:hover{border-color:var(--red);transform:translateX(4px);}
+.contact-card-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px;}
+.contact-card h4{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--red);margin-bottom:6px;}
+.contact-card p{font-size:0.87rem;color:#555;line-height:1.6;font-weight:300;}
+.contact-card a{color:var(--black);font-weight:500;text-decoration:none;}
+.contact-card a:hover{color:var(--red);}
+.contact-form-side{}
+.contact-form-side h3{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:400;margin-bottom:8px;}
+.contact-form-side p{font-size:0.87rem;color:var(--mid-gray);margin-bottom:28px;line-height:1.7;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.form-field{display:flex;flex-direction:column;margin-bottom:14px;}
+.form-field label{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);margin-bottom:8px;font-weight:500;}
+.form-field input,.form-field select,.form-field textarea{
+  border:1px solid #ddd;padding:12px 16px;font-size:0.87rem;font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--white);color:var(--black);outline:none;transition:border-color 0.2s;
+  appearance:none;resize:vertical;
+}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--red);}
+.submit-btn{
+  width:100%;background:var(--red);color:var(--white);padding:15px;
+  font-size:0.82rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;
+  border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;
+  transition:background 0.2s;
+}
+.submit-btn:hover{background:var(--red-dark);}
+
+/* â”€â”€ FOOTER â”€â”€ */
+footer{background:var(--black);padding:28px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-logo img{height:36px;width:auto;display:block;background:#fff;clip-path:inset(2px);}
+footer p{font-size:0.75rem;color:rgba(255,255,255,0.3);letter-spacing:0.06em;}
+footer span{color:var(--red);}
+
+/* â”€â”€ ANIMATIONS â”€â”€ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes scrollPulse{0%,100%{opacity:0.4;}50%{opacity:0.9;}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.75s cubic-bezier(.22,1,.36,1),transform 0.75s cubic-bezier(.22,1,.36,1);}
+.reveal.visible{opacity:1;transform:none;}
+.reveal-d1{transition-delay:0.1s;}.reveal-d2{transition-delay:0.2s;}.reveal-d3{transition-delay:0.3s;}.reveal-d4{transition-delay:0.4s;}
+
+/* â”€â”€ MOBILE RESPONSIVE â”€â”€ */
+@media(max-width:1024px){
+  .rooms-grid{grid-template-columns:repeat(2,1fr);}
+  .reviews-grid{grid-template-columns:repeat(2,1fr);}
+  .about-inner{grid-template-columns:1fr;}
+  .contact-inner{grid-template-columns:1fr;}
+  .section-wrap{padding:72px 36px;}
+}
+@media(max-width:768px){
+  nav{padding:14px 20px;}
+  nav.scrolled{padding:10px 20px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero-logo-wrap img{height:70px;}
+  .hero-title{font-size:2.5rem;}
+  .rooms-grid{grid-template-columns:1fr;}
+  .amenities-grid{grid-template-columns:1fr 1fr;}
+  .reviews-grid{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:1fr 1fr;}
+  .stat:nth-child(2){border-right:none;}
+  .stat:nth-child(3){border-top:1px solid #eee;border-right:1px solid #eee;}
+  .stat:nth-child(4){border-top:1px solid #eee;}
+  .section-wrap{padding:60px 20px;}
+  .form-row{grid-template-columns:1fr;}
+  footer{padding:24px 20px;flex-direction:column;text-align:center;}
+  .hero-scroll{display:none;}
+}
+@media(max-width:480px){
+  .amenities-grid{grid-template-columns:1fr;}
+  .hero-title{font-size:2.1rem;}
+  .hero-btns{flex-direction:column;align-items:center;}
+  .btn-primary,.btn-outline{width:100%;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#hero" class="nav-logo"><img src="assets/logo-exact.jpeg" alt="Hello PG's Logo"/></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="https://wa.me/918128905992?text=Hi%2C%20I%20am%20interested%20in%20a%20room%20at%20Hello%20PG's%20%E2%80%93%20Tirupati%20Bunglow.%20Could%20you%20please%20share%20availability%20and%20pricing%3F" target="_blank" rel="noopener" class="nav-cta">Enquire Now</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#rooms" onclick="closeMenu()">Rooms</a>
+  <a href="#amenities" onclick="closeMenu()">Amenities</a>
+  <a href="#reviews" onclick="closeMenu()">Reviews</a>
+  <a href="https://wa.me/918128905992?text=Hi%2C%20I%20am%20interested%20in%20a%20room%20at%20Hello%20PG's%20%E2%80%93%20Tirupati%20Bunglow.%20Could%20you%20please%20share%20availability%20and%20pricing%3F" target="_blank" rel="noopener" class="m-cta" onclick="closeMenu()">Enquire Now</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-accent-2"></div>
+  <div class="hero-logo-wrap">
+    <img src="assets/logo-exact.jpeg" alt="Hello PG's" style="height:80px;width:auto;"/>
+  </div>
+  <div class="hero-tag">Hello PG's Ahmedabad</div>
+  <h1 class="hero-title">Premium Boys'<br/><em>Accommodation</em></h1>
+  <p class="hero-sub">Comfort &middot; Community &middot; Convenience</p>
+  <div class="hero-rating">
+    <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+    <span>4.6 Rating &nbsp;&middot;&nbsp; 18 Google Reviews</span>
+  </div>
+  <div class="hero-btns">
+    <a href="#rooms" class="btn-primary">Explore Rooms</a>
+    <a href="https://wa.me/918128905992?text=Hi%2C%20I%20am%20interested%20in%20a%20room%20at%20Hello%20PG's%20%E2%80%93%20Tirupati%20Bunglow.%20Could%20you%20please%20share%20availability%20and%20pricing%3F" target="_blank" rel="noopener" class="btn-outline">Enquire Now</a>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<div class="section-wrap">
+  <div class="about-inner">
+    <div class="reveal">
+      <p class="section-eyebrow">Who We Are</p>
+      <div class="gold-line"></div>
+      <h2 class="section-title">A Home Away<br/><em>From Home</em></h2>
+      <p>Nestled in the vibrant heart of Bopal, Ahmedabad, Hello PG's &ndash; Tirupati Bunglow is a premium boys' hostel designed for working professionals and students seeking comfort, community, and convenience.</p>
+      <p>Every detail &mdash; from our home-cooked meals to our well-maintained facilities &mdash; is crafted with care to ensure you feel at ease from day one.</p>
+      <div class="stats-row">
+        <div class="stat"><div class="stat-num">4.6</div><div class="stat-label">Google Rating</div></div>
+        <div class="stat"><div class="stat-num">18+</div><div class="stat-label">Reviews</div></div>
+        <div class="stat"><div class="stat-num">4</div><div class="stat-label">Room Types</div></div>
+        <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Verified</div></div>
+      </div>
+    </div>
+    <div class="about-visual reveal reveal-d2">
+      <div class="about-card">
+        <div class="red-tab"></div>
+        <img src="assets/logo-exact.jpeg" alt="Hello PG's" style="height:96px;width:auto;"/>
+        <h3>Why Hello PG's?</h3>
+        <p>Prime location near BRTS, Reliance Mall, TRP Mall & Zudio. Exceptional food, spotless cleanliness, and a kind, attentive management team that genuinely cares.</p>
+        <blockquote>"The owner is exceptionally kind, and the food provided is of high quality." &mdash; Google Reviewer</blockquote>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ROOMS -->
+<section id="rooms">
+<div class="section-wrap">
+  <div class="rooms-intro">
+    <div class="reveal">
+      <p class="section-eyebrow">Accommodation</p>
+      <div class="gold-line"></div>
+      <h2 class="section-title">Our <em>Room Types</em></h2>
+      <p class="section-sub" style="margin-bottom:0;">Four thoughtfully designed categories &mdash; all within the same premium property.</p>
+    </div>
+  </div>
+  <div class="rooms-grid">
+    <div class="room-card best reveal">
+      <span class="room-pill">Most Popular</span>
+      <span class="room-icon">&#128719;&#65039;</span>
+      <div class="room-name">3 <em>Sharing</em></div>
+      <div class="room-cap">Up to 3 Residents</div>
+      <ul class="room-features">
+        <li>Spacious shared room</li>
+        <li>Individual storage space</li>
+        <li>Common/Attached bath</li>
+        <li>High-speed Wi-Fi</li>
+        <li>Daily housekeeping</li>
+        <li>Home-cooked meals</li>
+      </ul>
+      <a href="https://wa.me/918128905992?text=Hi%2C%20I%20am%20interested%20in%20a%20room%20at%20Hello%20PG's%20%E2%80%93%20Tirupati%20Bunglow.%20Could%20you%20please%20share%20availability%20and%20pricing%3F" target="_blank" rel="noopener" class="enquire-btn">Enquire Now</a>
+    </div>
+    <div class="room-card reveal reveal-d1">
+      <span class="room-pill dark">Economical</span>
+      <span class="room-icon">&#127968;</span>
+      <div class="room-name">4 <em>Sharing</em></div>
+      <div class="room-cap">Up to 4 Residents</div>
+      <ul class="room-features">
+        <li>Comfortable large room</li>
+        <li>Dedicated cupboard space</li>
+        <li>Common washrooms</li>
+        <li>High-speed Wi-Fi</li>
+        <li>Daily housekeeping</li>
+        <li>Home-cooked meals</li>
+      </ul>
+      <a href="https://wa.me/918128905992?text=Hi%2C%20I%20am%20interested%20in%20a%20room%20at%20Hello%20PG's%20%E2%80%93%20Tirupati%20Bunglow.%20Could%20you%20please%20share%20availability%20and%20pricing%3F" target="_blank" rel="noopener" class="enquire-btn">Enquire Now</a>
+    </div>
+    <div class="room-card reveal reveal-d2">
+      <span class="room-pill">Premium</span>
+      <span class="room-icon">&#10024;</span>
+      <div class="room-name">2 <em>Sharing</em></div>
+      <div class="room-cap">Up to 2 Residents</div>
+      <ul class="room-features">
+        <li>Semi-private comfort</li>
+        <li>More personal space</li>
+        <li>Attached/Common bath</li>
+        <li>High-speed Wi-Fi</li>
+        <li>Daily housekeeping</li>
+        <li>Home-cooked meals</li>
+      </ul>
+      <a href="https://wa.me/918128905992?text=Hi%2C%20I%20am%20interested%20in%20a%20room%20at%20Hello%20PG's%20%E2%80%93%20Tirupati%20Bunglow.%20Could%20you%20please%20share%20availability%20and%20pricing%3F" target="_blank" rel="noopener" class="enquire-btn">Enquire Now</a>
+    </div>
+    <div class="room-card reveal reveal-d3">
+      <span class="room-pill dark">Exclusive</span>
+      <span class="room-icon">&#128081;</span>
+      <div class="room-name">Single <em>Room</em></div>
+      <div class="room-cap">1 Resident &middot; Full Privacy</div>
+      <ul class="room-features">
+        <li>Complete privacy</li>
+        <li>Personalized space</li>
+        <li>Exclusive washroom</li>
+        <li>High-speed Wi-Fi</li>
+        <li>Daily housekeeping</li>
+        <li>Home-cooked meals</li>
+      </ul>
+      <a href="https://wa.me/918128905992?text=Hi%2C%20I%20am%20interested%20in%20a%20room%20at%20Hello%20PG's%20%E2%80%93%20Tirupati%20Bunglow.%20Could%20you%20please%20share%20availability%20and%20pricing%3F" target="_blank" rel="noopener" class="enquire-btn">Enquire Now</a>
+    </div>
+  </div>
+  <!-- Hall note -->
+  <div style="margin-top:28px;background:var(--white);border:1px solid #e8e8e8;border-left:4px solid var(--red);padding:20px 24px;" class="reveal">
+    <p style="font-size:0.88rem;color:#555;line-height:1.7;"><strong style="color:var(--black);">Common Hall Available</strong> &mdash; All residents enjoy access to a shared common hall with comfortable seating &mdash; perfect for relaxing, socialising, or watching TV together.</p>
+  </div>
+</div>
+</section>
+
+<!-- AMENITIES -->
+<section id="amenities">
+<div class="section-wrap">
+  <p class="section-eyebrow reveal">Facilities</p>
+  <div class="gold-line reveal"></div>
+  <h2 class="section-title reveal">Every <em>Comfort</em> Included</h2>
+  <p class="section-sub reveal">Everything you need for a smooth, comfortable daily life &mdash; all under one roof.</p>
+  <div class="amenities-grid reveal">
+    <div class="amenity">
+      <div class="amenity-icon">&#127869;&#65039;</div>
+      <h3>Home-Style Meals</h3>
+      <p>Freshly prepared, nutritious home-cooked food served daily &mdash; consistently rated the top highlight by our residents.</p>
+    </div>
+    <div class="amenity">
+      <div class="amenity-icon">&#128715;&#65039;</div>
+      <h3>Common Hall</h3>
+      <p>A welcoming shared hall with comfortable seating for all residents &mdash; your second living room to relax and socialise.</p>
+    </div>
+    <div class="amenity">
+      <div class="amenity-icon">&#128246;</div>
+      <h3>High-Speed Wi-Fi</h3>
+      <p>Reliable internet throughout the property &mdash; ideal for remote work, online classes, and streaming without interruption.</p>
+    </div>
+    <div class="amenity">
+      <div class="amenity-icon">&#129529;</div>
+      <h3>Daily Housekeeping</h3>
+      <p>Regular cleaning of rooms and common areas maintained to the highest standards of hygiene and cleanliness.</p>
+    </div>
+    <div class="amenity">
+      <div class="amenity-icon">&#128205;</div>
+      <h3>Prime Location</h3>
+      <p>Steps from BRTS, Reliance Mall, TRP Mall & Zudio in Bopal &mdash; one of Ahmedabad's most connected and vibrant areas.</p>
+    </div>
+    <div class="amenity">
+      <div class="amenity-icon">&#128274;</div>
+      <h3>Safe & Secure</h3>
+      <p>A secure, well-monitored premises with a responsible management team always available to assist residents promptly.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+<div class="section-wrap">
+  <p class="section-eyebrow reveal">Testimonials</p>
+  <div class="gold-line reveal"></div>
+  <h2 class="section-title reveal">Real <em>Stories</em></h2>
+  <p class="section-sub reveal" style="color:rgba(255,255,255,0.4);">From residents who call Hello PG's their home.</p>
+  <div class="rating-bar reveal">
+    <div class="rating-big">4.6</div>
+    <div class="rating-info">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>18 Google Reviews</p>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"Accommodation quality is top-notch. The location is ideal and convenient &mdash; everything you need is right here."</p>
+      <div class="review-author">Kirti Yadav</div><div class="review-date">1 year ago</div>
+    </div>
+    <div class="review-card reveal reveal-d1">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"If you want good food, cleanliness, and a stay that feels like home &mdash; Hello PG is the place to be. Highly recommended!"</p>
+      <div class="review-author">Renish Kheradiya</div><div class="review-date">3 years ago</div>
+    </div>
+    <div class="review-card reveal reveal-d2">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"An outstanding experience from start to finish. Best facilities, great hospitality, and prime location with excellent food."</p>
+      <div class="review-author">Vikas Kumar</div><div class="review-date">2 years ago</div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"Ideal and convenient location. All needed facilities are available and the food is genuinely good &mdash; loved my stay."</p>
+      <div class="review-author">Sachin Rathva</div><div class="review-date">1 year ago</div>
+    </div>
+    <div class="review-card reveal reveal-d1">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"Accessible to BRTS, Reliance Mall, Zudio, TRP Mall &mdash; the location alone makes this PG worth every rupee."</p>
+      <div class="review-author">Selwyn Heber &middot; Local Guide</div><div class="review-date">3 months ago</div>
+    </div>
+    <div class="review-card reveal reveal-d2">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+      <p class="review-text">"A great place for working professionals &mdash; comfortable stay, good food, and a practical living setup at a fair price."</p>
+      <div class="review-author">Rahul Desai</div><div class="review-date">4 months ago</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<div class="section-wrap">
+  <div class="contact-inner">
+    <div class="reveal">
+      <p class="section-eyebrow">Enquire</p>
+      <div class="gold-line"></div>
+      <h2 class="section-title">Book Your<br/><em>Stay Today</em></h2>
+      <p style="color:var(--mid-gray);font-size:0.9rem;line-height:1.75;margin-bottom:32px;font-weight:300;">Interested in joining the Hello PG's family? Fill in the form and we'll get back to you with availability, pricing, and a personal tour.</p>
+      <div class="contact-cards">
+        <a href="https://www.google.com/maps/dir/23.0154608,72.4613188/Hello!+PG's,+Tirupati+Bunglow,+21,+opp.+Bopal+Police+station,+South+Bopal,+Ahmedabad:380058,+Ahmedabad,+Gujarat+380058/@23.0202891,72.4571833,15z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x395e9ba6431e4f09:0xb008b074a5096cf7!2m2!1d72.4692145!2d23.0249746?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div class="contact-card" style="cursor:pointer; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;">
+          <div class="contact-card-icon">&#128205;</div>
+          <div>
+            <h4>Location</h4>
+            <p>Tirupati Bunglow, Opp. Bopal Police Station<br/>South Bopal, Ahmedabad &ndash; 380058</p>
+            <p style="margin-top:8px; font-size:0.78rem; color:var(--red); font-weight:600; letter-spacing:0.06em;">
+              &#128506;&#65039; Get Directions &rarr;
+            </p>
+          </div>
+        </div>
+        </a>
+        <div class="contact-card">
+          <div class="contact-card-icon">&#11088;</div>
+          <div>
+            <h4>Google Rating</h4>
+            <p>4.6 / 5 &nbsp;&#9733;&#9733;&#9733;&#9733;&#9733; &nbsp;&middot;&nbsp; 18 Reviews<br/><a href="https://www.google.com/maps/dir/23.0154608,72.4613188/Hello!+PG's,+Tirupati+Bunglow,+21,+opp.+Bopal+Police+station,+South+Bopal,+Ahmedabad:380058,+Ahmedabad,+Gujarat+380058/@23.0202891,72.4571833,15z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x395e9ba6431e4f09:0xb008b074a5096cf7!2m2!1d72.4692145!2d23.0249746?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Find us on Google Maps &rarr;</a></p>
+          </div>
+        </div>
+        <a href="https://wa.me/918128905992?text=Hi%2C%20I%20am%20interested%20in%20a%20room%20at%20My%20Homes%20PG%20%E2%80%93%20Tirupati%20Bunglow.%20Could%20you%20please%20share%20availability%20and%20pricing%3F" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div class="contact-card" style="cursor:pointer; border-color: rgba(37,211,102,0.3);">
+          <div class="contact-card-icon">&#128172;</div>
+          <div>
+            <h4 style="color:#25D366;">WhatsApp Us</h4>
+            <p>+91 81289 05992<br/>Click to start a chat instantly</p>
+            <p style="margin-top:8px; font-size:0.78rem; color:#25D366; font-weight:600; letter-spacing:0.06em;">
+              Chat Now &rarr;
+            </p>
+          </div>
+        </div>
+        </a>
+
+        <div class="contact-card">
+          <div class="contact-card-icon">&#128336;</div>
+          <div>
+            <h4>Availability</h4>
+            <p>All 4 room types available.<br/>Contact us for current vacancies.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal reveal-d2">
+      <div class="contact-form-side">
+        <h3>Send an <em style="font-style:italic;color:var(--red);">Enquiry</em></h3>
+        <p>We'll respond within 24 hours with pricing and availability details.</p>
+        <div class="form-row">
+          <div class="form-field"><label>Your Name</label><input type="text" placeholder="Full Name"/></div>
+          <div class="form-field"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX"/></div>
+        </div>
+        <div class="form-field"><label>Room Preference</label>
+          <select>
+            <option value="">Select Room Type</option>
+            <option>Single Occupancy</option>
+            <option>2 Sharing</option>
+            <option>3 Sharing</option>
+            <option>4 Sharing</option>
+          </select>
+        </div>
+        <div class="form-field"><label>Message (Optional)</label><textarea rows="4" placeholder="When do you plan to move in? Any questions?"></textarea></div>
+        <button class="submit-btn" onclick="alert('Thank you! We will contact you shortly.')">Send Enquiry &rarr;</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="assets/logo-exact.jpeg" alt="Hello PG's" style="height:36px;"/></div>
+  <p>&copy; 2025 <span>Hello PG's &ndash; Tirupati Bunglow</span> &middot; Bopal, Ahmedabad &middot; All Rights Reserved</p>
+</footer>
+
+<script>
+// Navbar
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', scrollY > 60));
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+function closeMenu() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold: 0.1});
+reveals.forEach(el => obs.observe(el));
+</script>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/918128905992?text=Hi%2C%20I%20am%20interested%20in%20a%20room%20at%20My%20Homes%20PG%20%E2%80%93%20Tirupati%20Bunglow.%20Could%20you%20please%20share%20availability%20and%20pricing%3F" target="_blank" rel="noopener" id="wa-float" title="Chat on WhatsApp"
+   style="
+     position:fixed; bottom:28px; right:28px; z-index:999;
+     width:58px; height:58px; border-radius:50%;
+     background:#25D366; display:flex; align-items:center; justify-content:center;
+     box-shadow:0 6px 24px rgba(37,211,102,0.45);
+     transition:transform 0.25s, box-shadow 0.25s;
+     animation: waPop 0.6s 1.5s cubic-bezier(.22,1,.36,1) both;
+   "
+   onmouseover="this.style.transform='scale(1.12)';this.style.boxShadow='0 10px 32px rgba(37,211,102,0.6)'"
+   onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 6px 24px rgba(37,211,102,0.45)'"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48" fill="white">
+    <path d="M24 4C13 4 4 13 4 24c0 3.6 1 7 2.7 9.9L4 44l10.4-2.7A19.9 19.9 0 0 0 24 44c11 0 20-9 20-20S35 4 24 4zm0 36c-3.1 0-6-.8-8.5-2.3l-.6-.4-6.2 1.6 1.7-6-.4-.6A16 16 0 1 1 24 40zm8.8-11.8c-.5-.2-2.8-1.4-3.2-1.5-.4-.2-.7-.2-1 .2-.3.5-1.2 1.5-1.4 1.8-.3.3-.5.3-1 .1-.5-.2-2-.7-3.8-2.3-1.4-1.2-2.3-2.8-2.6-3.2-.3-.5 0-.7.2-1l.9-1c.2-.3.3-.5.4-.9.2-.3.1-.6 0-.9-.1-.2-1-2.5-1.4-3.4-.4-.9-.7-.8-1-.8h-.9c-.3 0-.8.1-1.2.6-.4.5-1.6 1.6-1.6 3.8s1.7 4.4 1.9 4.7c.2.3 3.3 5 8 7 1.1.5 2 .8 2.7 1 1.1.3 2.2.3 3 .2.9-.1 2.8-1.1 3.2-2.2.4-1.1.4-2 .3-2.2-.2-.2-.5-.3-1-.5z"/>
+  </svg>
+</a>
+<style>
+@keyframes waPop {
+  from { opacity:0; transform:scale(0.4) translateY(20px); }
+  to   { opacity:1; transform:scale(1) translateY(0); }
+}
+</style>
+
+</body>
+</html>
+
+
